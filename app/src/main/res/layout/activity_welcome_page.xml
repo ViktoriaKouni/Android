@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".view.Activities.WelcomePage">
+
+    <ImageView
+        android:id="@+id/welcomeImage16"
+        android:layout_width="453dp"
+        android:layout_height="95dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/corona2"
+        app:srcCompat="@mipmap/covid" />
+
+    <ImageView
+        android:id="@+id/welcomeImage17"
+        android:layout_width="145dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeImage16"
+        app:srcCompat="@mipmap/covid" />
+
+    <TextView
+        android:id="@+id/corona"
+        android:layout_width="270dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="128dp"
+        android:ellipsize="marquee"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_horizontal"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="Corona Virus                Corona Virus"
+        android:textAlignment="center"
+        android:textColor="#900D03"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/corona2"
+        android:layout_width="231dp"
+        android:layout_height="74dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_horizontal"
+        android:text="CVD 19"
+        android:textAlignment="center"
+        android:textColor="#900D03"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/corona" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
