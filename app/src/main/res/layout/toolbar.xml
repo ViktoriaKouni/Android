@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/tool"
-    android:background="@color/colorToolbar">
+    android:background="@color/colorToolbar"
+    android:orientation="vertical"
+    android:theme="@style/ToolBarStyle">
 
     <TextView
 

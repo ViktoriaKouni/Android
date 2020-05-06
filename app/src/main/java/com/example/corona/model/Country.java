@@ -23,7 +23,6 @@ public class Country {
     }
 
     public String getCountry() {
-
         return country;
     }
 
