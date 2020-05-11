@@ -1,4 +1,4 @@
-package com.example.corona;
+package com.example.corona.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.corona.R;
 
 public class WelcomePage extends AppCompatActivity {
 

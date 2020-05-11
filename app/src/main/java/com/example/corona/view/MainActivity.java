@@ -1,5 +1,6 @@
-package com.example.corona;
+package com.example.corona.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,27 +14,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.corona.R;
 import com.example.corona.adapter.CountriesAdapter;
 import com.example.corona.model.Country;
-import com.example.corona.model.Summary;
 import com.example.corona.viewModel.CoronaViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CountriesAdapter.OnListItemClickedListener {
     private CountriesAdapter adapter;
     private CoronaViewModel viewModel;
     private RecyclerView recyclerView;
-    private List<Summary> countries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        countries=new ArrayList<>();
-
 
         Toolbar toolbar = findViewById(R.id.tool);
         setSupportActionBar(toolbar);
@@ -41,15 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setViewModel();
 
         recyclerView = findViewById(R.id.countries);
-        adapter = new CountriesAdapter(viewModel.getAllCountries().getValue());
+        adapter = new CountriesAdapter(viewModel.getAllCountries().getValue(), this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         System.out.println(viewModel.getAllCountries());
 
     }
-
-
 
 
     @Override
@@ -59,30 +53,25 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchItem = menu.findItem(R.id.search);
 
         SearchView searchView = (SearchView) searchItem.getActionView();
-        {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
 
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-                    return false;
-                }
+            @Override
+            public boolean onQueryTextChange(String query) {
 
-                @Override
-                public boolean onQueryTextChange(String query) {
-
-                    adapter.getFilter().filter(query);
-                    return true;
-                }
-            });
-
-
-            return true;
-        }
+                adapter.getFilter().filter(query);
+                return true;
+            }
+        });
+        return true;
     }
 
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
     }
@@ -101,5 +90,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onListItemClicked(int clickedItemIndex) {
+        Intent intent = new Intent(this, CountryActivity.class);
+        startActivity(intent);
+    }
 }

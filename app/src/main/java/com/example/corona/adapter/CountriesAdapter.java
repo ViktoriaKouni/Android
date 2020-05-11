@@ -22,10 +22,12 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
 
     private List<Country> countries;
     private List<Country> countriesAll;
+    private OnListItemClickedListener onListItemClickedListener;
 
-    public CountriesAdapter(List<Country> countries) {
+    public CountriesAdapter(List<Country> countries, OnListItemClickedListener listener) {
         this.countries = countries;
         this.countriesAll = new ArrayList<>(countries);
+        onListItemClickedListener = listener;
     }
 
     @NonNull
@@ -33,7 +35,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
     public CountriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.country_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, onListItemClickedListener);
     }
 
     @Override
@@ -44,15 +46,16 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
 
 
     }
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView Country;
         TextView TotalConfirmed;
         MenuItem search;
 
         RelativeLayout parentLayout;
+        OnListItemClickedListener onListItemClickedListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnListItemClickedListener listener) {
             super(itemView);
 
             Country = itemView.findViewById(R.id.countryName);
@@ -60,9 +63,15 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
             search=itemView.findViewById(R.id.search);
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
+            onListItemClickedListener = listener;
+            itemView.setOnClickListener(this);
+
         }
 
-
+        @Override
+        public void onClick(View v) {
+            onListItemClickedListener.onListItemClicked(getAdapterPosition());
+        }
 
     }
 
@@ -75,15 +84,16 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
     public Filter getFilter() {
         return filter;
     }
+
     private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Country> filteredCountries = new ArrayList<>();
 
-            if (charSequence.toString().isEmpty()) {
+            if (charSequence == null || charSequence.length() == 0) {
                 filteredCountries.addAll(countriesAll);
             } else {
-                String filterPattern=charSequence.toString().toLowerCase().trim();
+                String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (Country  country : countriesAll) {
                     if (country.getCountry().toLowerCase().contains(filterPattern)) {
                         filteredCountries.add(country);
@@ -96,13 +106,16 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             countries.clear();
-            countries.addAll((List) filterResults.values);
+            countries.addAll((List<Country>) filterResults.values);
             notifyDataSetChanged();
 
         }
     };
 
-
+    public interface OnListItemClickedListener {
+        void onListItemClicked(int clickedItemIndex);
+    }
 }

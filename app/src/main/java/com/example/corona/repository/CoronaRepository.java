@@ -21,21 +21,16 @@ public class CoronaRepository {
     private ArrayList<Country> countries = new ArrayList<>();
     private static CoronaRepository instance;
 
-
     public MutableLiveData<ArrayList<Country>> getAllCountries() {
         getCountries();
 
-        countries = getCountriesList();
-
-
         MutableLiveData<ArrayList<Country>> data = new MutableLiveData<>();
         System.out.println("MUTABLE DATA" + Arrays.asList(countries));
+        countries.add(new Country("YOUR DICK", 234252325));
         data.setValue(countries);
         System.out.println("THIS IS MUTABLE LIVE DATA:" + data);
         return data;
     }
-
-
 
     public static CoronaRepository getInstance() {
         if (instance == null) {
@@ -70,21 +65,4 @@ public class CoronaRepository {
             }
         });
     }
-
-
-    public ArrayList<Country> getCountriesList() {
-
-        ArrayList<Country> countriesArray = new ArrayList<Country>();
-        // write code to get a list of type Country from your endpoint
-
-
-        return countriesArray;
-
-    }
-
-
-
-
-
-
 }
