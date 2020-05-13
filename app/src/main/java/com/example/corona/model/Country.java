@@ -10,31 +10,44 @@ public class Country {
     private String country;
 
 
-
-   @SerializedName("TotalConfirmed")
+    @SerializedName("TotalConfirmed")
    @Expose
   private int totalConfirmed;
 
+    @SerializedName("TotalDeaths")
+    @Expose
+    private int totalDeaths;
 
-    public Country(String country,int totalConfirmed){
+
+
+    @SerializedName("TotalRecovered")
+    @Expose
+    private int totalRecovered ;
+
+
+
+
+    public Country(String country,int totalConfirmed,int totalDeaths,int totalRecovered){
 
         this.country=country;
         this.totalConfirmed=totalConfirmed;
+        this.totalDeaths=totalDeaths;
+        this.totalRecovered=totalRecovered;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public int getTotalConfirmed() {
   return totalConfirmed;
     }
 
-//  public void setTotalConfirmed(int totalConfirmed) {
- //       this.totalConfirmed = totalConfirmed;
- //   }
+    public int getTotalDeaths() {
+        return totalDeaths;
+    }
+    public int getTotalRecovered() {
+        return totalRecovered;
+    }
+
 }

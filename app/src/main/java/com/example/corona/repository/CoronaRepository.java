@@ -1,7 +1,9 @@
 package com.example.corona.repository;
 
+import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.corona.api.CasesApi;
@@ -18,28 +20,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CoronaRepository {
-    private ArrayList<Country> countries = new ArrayList<>();
+    private MutableLiveData<ArrayList<Country>> countries = new MutableLiveData<>();
     private static CoronaRepository instance;
 
-    public MutableLiveData<ArrayList<Country>> getAllCountries() {
+    private CoronaRepository(Application application) {
         getCountries();
-
-        MutableLiveData<ArrayList<Country>> data = new MutableLiveData<>();
-        System.out.println("MUTABLE DATA" + Arrays.asList(countries));
-        countries.add(new Country("YOUR DICK", 234252325));
-        data.setValue(countries);
-        System.out.println("THIS IS MUTABLE LIVE DATA:" + data);
-        return data;
     }
 
-    public static CoronaRepository getInstance() {
+    public LiveData<ArrayList<Country>> getAllCountries() {
+        return countries;
+    }
+
+    public static CoronaRepository getInstance(Application application) {
         if (instance == null) {
-            instance = new CoronaRepository();
+            instance = new CoronaRepository(application);
         }
         return instance;
     }
 
-    public void getCountries() {
+    private void getCountries() {
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .baseUrl("https://api.covid19api.com/")
                 .addConverterFactory(GsonConverterFactory.create());
@@ -53,7 +52,7 @@ public class CoronaRepository {
                 if (response.code() == 200) {
                     Log.i("Retrofit", "Good response");
                     Summary apiCountries = response.body();
-                    countries.addAll(apiCountries.getCountries());
+                    countries.setValue(apiCountries.getCountries());
                     System.out.println("API COUNTRIES ARE HERE:" + Arrays.asList(apiCountries.getCountries()));
                 }
             }

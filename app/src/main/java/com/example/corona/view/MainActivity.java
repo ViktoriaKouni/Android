@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
         setViewModel();
 
         recyclerView = findViewById(R.id.countries);
-        adapter = new CountriesAdapter(viewModel.getAllCountries().getValue(), this);
+        adapter = new CountriesAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
 
     public void setViewModel() {
         viewModel = new ViewModelProvider(this).get(CoronaViewModel.class);
-        viewModel.init();
 
         viewModel.getAllCountries().observe(this, new Observer<List<Country>>() {
 
             @Override
             public void onChanged(List<Country> countries) {
+                adapter.setCountries(countries);
                 adapter.notifyDataSetChanged();
             }
         });

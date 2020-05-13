@@ -1,30 +1,26 @@
 package com.example.corona.viewModel;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.corona.model.Country;
 import com.example.corona.repository.CoronaRepository;
 
 import java.util.ArrayList;
 
-public class CoronaViewModel extends ViewModel {
-
+public class CoronaViewModel extends AndroidViewModel {
     private CoronaRepository repository;
-    private MutableLiveData<ArrayList<Country>> countryList;
 
-    public void init() {
-        if(countryList != null) {
-            return;
-        }
-        repository = CoronaRepository.getInstance();
-        countryList = repository.getAllCountries();
+    public CoronaViewModel(@NonNull Application application) {
+        super(application);
+        repository = CoronaRepository.getInstance(application);
     }
 
-   public LiveData<ArrayList<Country>> getAllCountries(){
-       System.out.println("THIS IS LIVE DATA FROM VIEWMODEL :" + countryList);
-        return countryList;
+    public LiveData<ArrayList<Country>> getAllCountries(){
+        return repository.getAllCountries();
     }
 
 
