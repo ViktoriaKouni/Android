@@ -21,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CoronaRepository {
     private MutableLiveData<ArrayList<Country>> countries = new MutableLiveData<>();
+    private Country clickedCountry;
     private static CoronaRepository instance;
 
     private CoronaRepository(Application application) {
@@ -63,5 +64,16 @@ public class CoronaRepository {
                 Log.i("Retrofit", "Something went wrong :(" + call.toString());
             }
         });
+    }
+
+    public Country getCountry(String country) {
+        if(countries.getValue() != null) {
+            for (Country myCountry : countries.getValue()) {
+                if(myCountry.getCountry().equals(country)) {
+                    clickedCountry = myCountry;
+                }
+            }
+        }
+        return clickedCountry;
     }
 }

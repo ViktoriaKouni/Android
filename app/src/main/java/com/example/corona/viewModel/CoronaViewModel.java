@@ -24,8 +24,7 @@ public class CoronaViewModel extends AndroidViewModel {
     }
 
 
-
-
-
-
+    public Country getCountry(String country) {
+        return repository.getCountry(country);
+    }
 }

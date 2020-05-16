@@ -1,5 +1,6 @@
 package com.example.corona.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corona.R;
 import com.example.corona.model.Country;
+import com.example.corona.view.CountryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +39,23 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountriesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CountriesAdapter.ViewHolder holder, final int position) {
         if(countries != null) {
             Country countryPosition = countries.get(position);
             holder.Country.setText(countryPosition.getCountry());
             holder.TotalConfirmed.setText(String.valueOf(countryPosition.getTotalConfirmed()));
             holder.TotalDeaths.setText(String.valueOf(countryPosition.getTotalDeaths()));
             holder.TotalRecovered.setText(String.valueOf(countryPosition.getTotalRecovered()));
+
+            holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), CountryActivity.class);
+                    String countryName = countries.get(position).getCountry();
+                    intent.putExtra("name", countryName );
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
     }

@@ -1,6 +1,5 @@
 package com.example.corona.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
     private CountriesAdapter adapter;
     private CoronaViewModel viewModel;
     private RecyclerView recyclerView;
+    private String countryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,7 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         System.out.println(viewModel.getAllCountries());
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,14 +83,14 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
             public void onChanged(List<Country> countries) {
                 adapter.setCountries(countries);
                 adapter.notifyDataSetChanged();
+
             }
         });
     }
 
-
     @Override
     public void onListItemClicked(int clickedItemIndex) {
-        Intent intent = new Intent(this, CountryActivity.class);
-        startActivity(intent);
     }
+
+
 }
