@@ -14,28 +14,38 @@ import com.example.corona.R;
 
 public class HomeFragment extends Fragment {
 
-    TextView totalConfirmed;
     String countryName;
-    public HomeFragment(){}
+    int countryRecovered;
+    int countryConfirmed;
+    int countryDeaths;
 
+    public HomeFragment() {
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Bundle bundle = this.getArguments();
 
         countryName = bundle.getString("name");
-        System.out.println(countryName);
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        countryConfirmed = bundle.getInt("confirmed");
+        countryRecovered = bundle.getInt("recovered");
+        countryDeaths = bundle.getInt("deaths");
 
+        TextView name = view.findViewById(R.id.tvCountryName);
+        TextView totalConfirmed = view.findViewById(R.id.tvTotalConfirmed);
+        TextView totalRecovered = view.findViewById(R.id.tvTotalRecovered);
+        TextView totalDeaths = view.findViewById(R.id.tvTotalDeaths);
 
-
-
+        name.setText(countryName);
+        System.out.println(countryDeaths);
+        totalConfirmed.setText(String.valueOf(countryConfirmed));
+        totalRecovered.setText(String.valueOf(countryRecovered));
+        totalDeaths.setText(String.valueOf(countryDeaths));
 
         return view;
     }
-
-
 }

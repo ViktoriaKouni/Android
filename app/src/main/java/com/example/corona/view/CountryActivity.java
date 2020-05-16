@@ -15,6 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CountryActivity extends AppCompatActivity {
     private String countryName;
+    private int countryConfirmed;
+    private int countryRecovered;
+    private int countryDeaths;
     private Fragment homeFragment;
     private Fragment chartsFragment;
 
@@ -25,12 +28,18 @@ public class CountryActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         countryName = bundle.getString("name");
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_nav);
+        countryConfirmed = bundle.getInt("confirmed");
+        countryRecovered = bundle.getInt("recovered");
+        countryDeaths = bundle.getInt("deaths");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
         homeFragment = new HomeFragment();
         chartsFragment = new ChartsFragment();
 
         bundle.putString("name", countryName);
+        bundle.putInt("confirmed", countryConfirmed);
+        bundle.putInt("recovered", countryRecovered);
+        bundle.putInt("deaths", countryDeaths);
         homeFragment.setArguments(bundle);
         chartsFragment.setArguments(bundle);
 

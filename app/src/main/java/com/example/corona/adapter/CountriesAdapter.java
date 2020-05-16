@@ -52,7 +52,15 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), CountryActivity.class);
                     String countryName = countries.get(position).getCountry();
+                    int countryConfirmedCases = countries.get(position).getTotalConfirmed();
+                    int countryRecoveredCases = countries.get(position).getTotalRecovered();
+                    int countryDeaths = countries.get(position).getTotalDeaths();
+
+
                     intent.putExtra("name", countryName );
+                    intent.putExtra("confirmed", countryConfirmedCases );
+                    intent.putExtra("recovered", countryRecoveredCases );
+                    intent.putExtra("deaths", countryDeaths );
                     v.getContext().startActivity(intent);
                 }
             });

@@ -18,11 +18,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Coronavirus COVID-19\nGlobal Cases"
+            android:text="Coronavirus COVID-19"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="24dp"
             android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center_horizontal"
+            android:text="Greece"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/tvLabelTotalConfirmed"
@@ -54,8 +65,6 @@
             android:textColor="@color/colorAccent"
             tools:text="756048" />
 
-
-
         <TextView
             android:id="@+id/tvLabelTotalRecovered"
             android:layout_width="wrap_content"
@@ -73,7 +82,6 @@
 
         <TextView
             android:id="@+id/tvLastUpdated"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
