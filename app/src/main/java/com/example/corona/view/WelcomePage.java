@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.corona.R;
+import com.example.corona.view.Activities.Login;
 
 public class WelcomePage extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class WelcomePage extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent welcomeIntent = new Intent(WelcomePage.this, MainActivity.class);
+                Intent welcomeIntent = new Intent(WelcomePage.this, Login.class);
                 startActivity(welcomeIntent);
                 finish();
             }

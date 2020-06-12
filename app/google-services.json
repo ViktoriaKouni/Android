@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "920217167205",
+    "firebase_url": "https://coronaapp-68f97.firebaseio.com",
+    "project_id": "coronaapp-68f97",
+    "storage_bucket": "coronaapp-68f97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920217167205:android:a218f3b91befc23eb2ad8c",
+        "android_client_info": {
+          "package_name": "com.example.corona"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920217167205-m4stsoo1mj9uhumg1sj6a15mo8uek2ic.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.corona",
+            "certificate_hash": "85691b98c6f915469fb24c468e14a5b00db22849"
+          }
+        },
+        {
+          "client_id": "920217167205-2bptbpm3tcgvhr65b9ekp7c6418bdq5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYWt4CTuOfycBVs8ZsN7y0r0pp9dK1VvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920217167205-2bptbpm3tcgvhr65b9ekp7c6418bdq5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
