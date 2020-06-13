@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corona.R;
 import com.example.corona.adapter.CountriesAdapter;
+import com.example.corona.api.ResourceIdlng;
 import com.example.corona.model.Country;
 import com.example.corona.viewModel.CoronaViewModel;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ResourceIdlng.getInstance().increment();
         Toolbar toolbar = findViewById(R.id.tool);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements CountriesAdapter.
             public void onChanged(List<Country> countries) {
                 adapter.setCountries(countries);
                 adapter.notifyDataSetChanged();
+                ResourceIdlng.getInstance().decrement();
 
             }
         });
