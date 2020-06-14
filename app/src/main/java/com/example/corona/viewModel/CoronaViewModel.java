@@ -29,7 +29,7 @@ public class CoronaViewModel extends AndroidViewModel {
         return repository.getStatistics();
     }
 
-    public void getCountryStatistics(String name){
+    public void getCountryStatistics(String name) {
         repository.getCountryStatistics(name);
     }
 
