@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".view.WelcomePage">
+    tools:context=".view.Activities.WelcomePage">
 
     <ImageView
         android:id="@+id/welcomeImage16"

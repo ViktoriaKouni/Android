@@ -7,9 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.corona.model.Country;
+import com.example.corona.model.Statistics;
 import com.example.corona.repository.CoronaRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CoronaViewModel extends AndroidViewModel {
     private CoronaRepository repository;
@@ -19,8 +21,16 @@ public class CoronaViewModel extends AndroidViewModel {
         repository = CoronaRepository.getInstance(application);
     }
 
-    public LiveData<ArrayList<Country>> getAllCountries(){
+    public LiveData<ArrayList<Country>> getAllCountries() {
         return repository.getAllCountries();
+    }
+
+    public LiveData<List<Statistics>> getStatistics() {
+        return repository.getStatistics();
+    }
+
+    public void getCountryStatistics(String name){
+        repository.getCountryStatistics(name);
     }
 
 

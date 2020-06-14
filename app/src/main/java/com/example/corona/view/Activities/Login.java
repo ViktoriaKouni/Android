@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.corona.R;
 import com.example.corona.model.User;
-import com.example.corona.view.MainActivity;
 import com.example.corona.viewModel.LoginViewModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;

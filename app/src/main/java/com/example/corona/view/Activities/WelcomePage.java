@@ -1,4 +1,4 @@
-package com.example.corona.view;
+package com.example.corona.view.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.corona.R;
-import com.example.corona.view.Activities.Login;
 
 public class WelcomePage extends AppCompatActivity {
 

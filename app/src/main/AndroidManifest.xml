@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.Activities.Login"></activity>
-        <activity android:name=".view.CountryActivity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.WelcomePage">
+        <activity android:name=".view.Activities.CountryActivity" />
+        <activity android:name=".view.Activities.MainActivity" />
+        <activity android:name=".view.Activities.WelcomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

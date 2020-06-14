@@ -8,7 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.corona.api.ResourceIdlng;
-import com.example.corona.view.MainActivity;
+import com.example.corona.view.Activities.MainActivity;
 
 import org.junit.After;
 import org.junit.Before;

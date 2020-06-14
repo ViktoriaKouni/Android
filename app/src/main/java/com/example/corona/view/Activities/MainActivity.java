@@ -1,4 +1,4 @@
-package com.example.corona.view;
+package com.example.corona.view.Activities;
 
 import android.os.Bundle;
 import android.view.Menu;

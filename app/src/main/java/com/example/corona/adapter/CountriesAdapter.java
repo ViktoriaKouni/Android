@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corona.R;
 import com.example.corona.model.Country;
-import com.example.corona.view.CountryActivity;
+import com.example.corona.view.Activities.CountryActivity;
 
 import java.util.ArrayList;
 import java.util.List;

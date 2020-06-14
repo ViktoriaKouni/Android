@@ -84,4 +84,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
 
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

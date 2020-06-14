@@ -7,11 +7,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginUserRepository {
 
 
-    public CollectionReference getCollectionUser(){
+    public CollectionReference getCollectionUser() {
         return FirebaseFirestore.getInstance().collection("User");
     }
 
-    public void createUser(User user){
+    public void createUser(User user) {
         getCollectionUser().document(user.getEmail()).set(user);
     }
 }
