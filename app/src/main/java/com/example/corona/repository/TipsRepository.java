@@ -20,7 +20,7 @@ public class TipsRepository {
 
     private TipsRepository(Application application) {
         TipsDatabase database = TipsDatabase.getInstance(application);
-        tipsDAO = database.guidanceDao();
+        tipsDAO = database.tipsDao();
         allTips = tipsDAO.getAllTips();
     }
 
@@ -56,13 +56,13 @@ public class TipsRepository {
     }
 
     public void delete(Tips tips) {
-        new DeleteGuidanceAsyncTask(tipsDAO).execute(tips);
+        new DeleteTipsAsyncTask(tipsDAO).execute(tips);
     }
 
-    private static class DeleteGuidanceAsyncTask extends AsyncTask<Tips, Void, Void> {
+    private static class DeleteTipsAsyncTask extends AsyncTask<Tips, Void, Void> {
         private TipsDAO tipsDAO;
 
-        private DeleteGuidanceAsyncTask(TipsDAO tipsDAO) {
+        private DeleteTipsAsyncTask(TipsDAO tipsDAO) {
             this.tipsDAO = tipsDAO;
         }
 

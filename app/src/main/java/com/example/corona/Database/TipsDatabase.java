@@ -13,12 +13,12 @@ public abstract class TipsDatabase extends RoomDatabase {
 
     private static TipsDatabase instance;
 
-    public abstract TipsDAO guidanceDao();
+    public abstract TipsDAO tipsDao();
 
     public static synchronized TipsDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    TipsDatabase.class, "tips_database")
+                    TipsDatabase.class, "tip_database")
                     .fallbackToDestructiveMigration()
                     .build();
         }

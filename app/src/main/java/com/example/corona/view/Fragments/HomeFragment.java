@@ -19,7 +19,12 @@ public class HomeFragment extends Fragment {
     int countryConfirmed;
     int countryDeaths;
 
-    public HomeFragment() {
+
+    public HomeFragment(String countryName,int countryConfirmed, int countryRecovered, int countryDeaths) {
+        this.countryName = countryName;
+        this.countryConfirmed=countryConfirmed;
+        this.countryRecovered=countryRecovered;
+        this.countryDeaths=countryDeaths;
     }
 
     @Nullable
@@ -30,10 +35,10 @@ public class HomeFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
 
-        countryName = bundle.getString("name");
-        countryConfirmed = bundle.getInt("confirmed");
-        countryRecovered = bundle.getInt("recovered");
-        countryDeaths = bundle.getInt("deaths");
+        countryName = countryName;
+        countryConfirmed=countryConfirmed;
+        countryRecovered=countryRecovered;
+        countryDeaths=countryDeaths;
 
         TextView name = view.findViewById(R.id.tvCountryName);
         TextView totalConfirmed = view.findViewById(R.id.tvTotalConfirmed);

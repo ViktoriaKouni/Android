@@ -89,7 +89,8 @@ public class ChartsFragment extends Fragment {
 
         for (Statistics stats : statisticsList) {
             String month = getMonth(stats.getDate());
-            hashMap.put(month, hashMap.get(month) + stats.getTotalActive());
+            int newCases = stats.getTotalActive()-hashMap.get(month);
+            hashMap.put(month, hashMap.get(month) + newCases);
         }
 
 

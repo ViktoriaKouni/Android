@@ -54,18 +54,18 @@ public class TipsFragment extends Fragment implements TipsAdapter.OnListItemClic
         tipsAdapter = new TipsAdapter(this);
         tipsRecyclerView.setAdapter(tipsAdapter);
 
-        addNewItem = rootView.findViewById(R.id.guidance_fab);
+        addNewItem = rootView.findViewById(R.id.add);
         addNewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveGuidance();
+                saveTip();
             }
         });
 
         tipsViewModel.getTips().observe(this.getActivity(), new Observer<List<Tips>>() {
             @Override
-            public void onChanged(List<Tips> guidances) {
-                tipsAdapter.setGuidances(guidances);
+            public void onChanged(List<Tips> tips) {
+                tipsAdapter.setTips(tips);
 
             }
         });
@@ -92,18 +92,20 @@ public class TipsFragment extends Fragment implements TipsAdapter.OnListItemClic
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (!sharedPreferences.contains("data")) {
 
-            tipsViewModel.insert(new Tips("CO2"));
+            tipsViewModel.insert(new Tips("Wash Your Hands"));
+            tipsViewModel.insert(new Tips("Dont use public transportation"));
+            tipsViewModel.insert(new Tips("STAY HOME"));
             editor.putBoolean("data", true).apply();
         }
     }
 
-    private void saveGuidance() {
+    private void saveTip() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = getLayoutInflater().inflate(R.layout.add_tip, null);
         description = view.findViewById(R.id.tip_description_dialog);
         builder.setView(view);
 
-        builder.setPositiveButton("Add New Guidance", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Add New Tip", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String txt = description.getText().toString();
@@ -113,7 +115,7 @@ public class TipsFragment extends Fragment implements TipsAdapter.OnListItemClic
             }
         });
 
-        builder.setNegativeButton("Never mind", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Never mind, I forgot it", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

@@ -46,7 +46,7 @@ public class CountryActivity extends AppCompatActivity {
         countryDeaths = bundle.getInt("deaths");
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
-        homeFragment = new HomeFragment();
+        homeFragment = new HomeFragment(countryName,countryConfirmed,countryRecovered,countryDeaths);
 
 
         bundle.putString("name", countryName);
@@ -101,7 +101,7 @@ public class CountryActivity extends AppCompatActivity {
                     Fragment fragment = null;
                     switch (menuItem.getItemId()) {
                         case R.id.navigation_home:
-                            setFragment(homeFragment);
+                            fragment = new HomeFragment(countryName,countryConfirmed,countryRecovered,countryDeaths);
                             break;
                         case R.id.navigation_charts:
                             fragment = new ChartsFragment(countryName);

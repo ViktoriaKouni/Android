@@ -6,9 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class Summary {
-    @SerializedName("Global")
-    @Expose
-    private Global global;
+
     @SerializedName("Countries")
     @Expose
     private ArrayList<Country> countries;
@@ -17,8 +15,7 @@ public class Summary {
         return countries;
     }
 
-    public Summary(Global global, ArrayList<Country> countries) {
-        global = global;
+    public Summary( ArrayList<Country> countries) {
         countries = countries;
     }
 }

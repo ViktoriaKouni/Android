@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/fragment_guidance_co2_container">
+    android:id="@+id/fragment_tips_container">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tips_list"
@@ -14,7 +14,7 @@
         tools:listitem="@layout/tips_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/guidance_fab"
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

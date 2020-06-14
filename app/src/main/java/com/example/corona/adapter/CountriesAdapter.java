@@ -40,7 +40,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull CountriesAdapter.ViewHolder holder, final int position) {
-        if(countries != null) {
+        if (countries != null) {
             Country countryPosition = countries.get(position);
             holder.Country.setText(countryPosition.getCountry());
             holder.TotalConfirmed.setText(String.valueOf(countryPosition.getTotalConfirmed()));
@@ -57,10 +57,10 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
                     int countryDeaths = countries.get(position).getTotalDeaths();
 
 
-                    intent.putExtra("name", countryName );
-                    intent.putExtra("confirmed", countryConfirmedCases );
-                    intent.putExtra("recovered", countryRecoveredCases );
-                    intent.putExtra("deaths", countryDeaths );
+                    intent.putExtra("name", countryName);
+                    intent.putExtra("confirmed", countryConfirmedCases);
+                    intent.putExtra("recovered", countryRecoveredCases);
+                    intent.putExtra("deaths", countryDeaths);
                     v.getContext().startActivity(intent);
                 }
             });
@@ -91,9 +91,9 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
 
             Country = itemView.findViewById(R.id.countryName);
             TotalConfirmed = itemView.findViewById(R.id.confirmedCases);
-            TotalDeaths=itemView.findViewById(R.id.totalDeaths);
-            TotalRecovered=itemView.findViewById(R.id.casesRecovered);
-            search=itemView.findViewById(R.id.search);
+            TotalDeaths = itemView.findViewById(R.id.totalDeaths);
+            TotalRecovered = itemView.findViewById(R.id.casesRecovered);
+            search = itemView.findViewById(R.id.search);
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
             onListItemClickedListener = listener;
@@ -110,7 +110,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
 
     @Override
     public int getItemCount() {
-        if(countries != null) {
+        if (countries != null) {
             return countries.size();
         }
         return 0;
@@ -130,7 +130,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.View
                 filteredCountries.addAll(countriesAll);
             } else {
                 String filterPattern = charSequence.toString().toLowerCase().trim();
-                for (Country  country : countriesAll) {
+                for (Country country : countriesAll) {
                     if (country.getCountry().toLowerCase().contains(filterPattern)) {
                         filteredCountries.add(country);
                     }
